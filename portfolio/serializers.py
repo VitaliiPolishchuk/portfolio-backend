@@ -10,7 +10,7 @@ class ProjectSerializer(serializers.ModelSerializer):
   
   class Meta:
     model = Project
-    fields = ('id', 'name', 'description', 'get_image', 'get_thumbnail', 'deployed_url', 'github_url', 'categories', 'key_techs' )
+    fields = ('id', 'name', 'description', 'get_image', 'deployed_url', 'github_frontend_url', 'github_backend_url', 'rating', 'categories', 'key_techs' )
 
   def get_categories(self, obj):
     return [category.name  for category in obj.categories.all()]
