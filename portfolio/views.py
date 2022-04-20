@@ -12,7 +12,7 @@ from portfolio.serializers import ProjectSerializer
 @api_view(["GET"])
 def get_projects(request):
 
-  projects = Project.objects.all()
+  projects = Project.objects.filter(active=True)
 
   serializer = ProjectSerializer(projects, many=True)
 
@@ -22,7 +22,7 @@ def get_projects(request):
 @api_view(["GET"])
 def get_categories(request):
 
-  categories = ProjectCategory.objects.all()
+  categories = ProjectCategory.objects.filter(active=True)
 
   data = [category.name for category in categories ]  
 

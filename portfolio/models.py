@@ -8,6 +8,7 @@ from django.core.files import File
 
 class ProjectCategory(models.Model):
   name = models.CharField(max_length=100)
+  active = models.BooleanField(default=True)
   
   def __str__(self):
     return self.name
@@ -29,9 +30,10 @@ class Project(models.Model):
   categories = models.ManyToManyField(ProjectCategory)
   tags = models.ManyToManyField(ProjectTag)
   date_added = models.DateTimeField(auto_now_add=True)
+  active = models.BooleanField(default=True)
 
   class Meta:
-    ordering = ('-date_added',)
+    ordering = ('-rating','-date_added',)
 
   def __str__(self):
     return self.name
